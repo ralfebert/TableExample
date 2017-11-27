@@ -10,6 +10,11 @@ import UIKit
 
 class FruitsTableViewController: UITableViewController {
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.tableView.isEditing = true
+    }
+
     var fruits = ["Apple", "Apricot", "Banana", "Blueberry", "Cantaloupe", "Cherry", "Clementine", "Coconut", "Cranberry", "Fig", "Grape", "Grapefruit", "Kiwi fruit", "Lemon", "Lime", "Lychee", "Mandarine", "Mango", "Melon", "Nectarine", "Olive", "Orange", "Papaya", "Peach", "Pear", "Pineapple", "Raspberry", "Strawberry"]
 
     // MARK: - Table view data source
@@ -31,6 +36,24 @@ class FruitsTableViewController: UITableViewController {
         cell.imageView?.image = UIImage(named: fruitName)
         
         return cell
+    }
+
+    // MARK: - Reordering
+
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return .none
+    }
+
+    override func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let movedObject = self.fruits[sourceIndexPath.row]
+        fruits.remove(at: sourceIndexPath.row)
+        fruits.insert(movedObject, at: destinationIndexPath.row)
+        NSLog("%@", "\(sourceIndexPath.row) => \(destinationIndexPath.row) \(fruits)")
+        // To check for correctness enable: self.tableView.reloadData()
     }
 
 }
