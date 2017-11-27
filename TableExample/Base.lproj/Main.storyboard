@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -81,29 +82,39 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LabelCell" textLabel="Qf7-F6-vz5" detailTextLabel="tRe-zR-58C" rowHeight="60" style="IBUITableViewCellStyleSubtitle" id="c10-vJ-tlE">
-                                <rect key="frame" x="0.0" y="28" width="375" height="60"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LabelCell" id="c10-vJ-tlE" customClass="FruitTableViewCell" customModule="TableExample" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="c10-vJ-tlE" id="Gi0-5s-PCO">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Qf7-F6-vz5">
-                                            <rect key="frame" x="16" y="10" width="33.5" height="20.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1yr-R8-3qe">
+                                            <rect key="frame" x="16" y="11.5" width="42" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tRe-zR-58C">
-                                            <rect key="frame" x="16" y="33.5" width="44" height="14.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GnG-we-48k">
+                                            <rect key="frame" x="225" y="0.0" width="150" height="43.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="44" id="9Vh-ac-VI4"/>
+                                                <constraint firstAttribute="width" constant="150" id="qdS-qR-mE6"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="GnG-we-48k" secondAttribute="bottom" id="OEa-C7-OjT"/>
+                                        <constraint firstAttribute="trailing" secondItem="GnG-we-48k" secondAttribute="trailing" id="V6W-4L-AEn"/>
+                                        <constraint firstItem="1yr-R8-3qe" firstAttribute="centerY" secondItem="Gi0-5s-PCO" secondAttribute="centerY" id="W0m-MS-7UP"/>
+                                        <constraint firstItem="GnG-we-48k" firstAttribute="top" secondItem="Gi0-5s-PCO" secondAttribute="top" id="u9k-0Q-gZe"/>
+                                        <constraint firstItem="1yr-R8-3qe" firstAttribute="leading" secondItem="Gi0-5s-PCO" secondAttribute="leadingMargin" id="zOa-GA-Zga"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="fruitImageView" destination="GnG-we-48k" id="BUL-A1-YT6"/>
+                                    <outlet property="label" destination="1yr-R8-3qe" id="O2s-1F-hBz"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -113,7 +124,7 @@
                     </tableView>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="1329" y="18"/>
+            <point key="canvasLocation" x="1328.8" y="17.541229385307346"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="A0F-FY-bCW">
